@@ -1,0 +1,13 @@
+# scientific packages
+pandas
+scipy
+# python linting
+autopep8
+black
+yapf
+bandit
+flake8
+mypy
+pycodestyle
+pydocstyle
+pylint

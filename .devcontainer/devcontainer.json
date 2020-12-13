@@ -1,0 +1,34 @@
+{
+	"name": "TensorFlow Dev Env",
+	"build": {
+		"dockerfile": "Dockerfile",
+		"context": ".",
+		"args": {
+			"USER_UID": "1000", // id -u
+			"USER_GID": "1000", // id -g
+		}
+	},
+	// Set *default* container specific settings.json values on container create.
+	"settings": {
+		"terminal.integrated.shell.linux": "/bin/zsh",
+		"python.pythonPath": "/usr/local/bin/python",
+		"python.linting.enabled": true,
+		"python.linting.pylintEnabled": true
+	},
+	// Add the IDs of extensions you want installed when the container is created.
+	"extensions": [
+		"ms-python.python"
+	],
+	// Use 'forwardPorts' to make a list of ports inside the container available locally.
+	"forwardPorts": [
+		8888, // jupyter standard port
+	],
+	"remoteUser": "developer",
+	"remoteEnv": {
+		"WORKSPACE": "${containerWorkspaceFolder}",
+	},
+	"runArgs": [
+		"--gpus=all", // GPU accellerated
+		"--cap-add=CAP_SYS_ADMIN", // needed for GPU profiling
+	]
+}
